@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/deployment-diagram
+
+node "Kafka" {
+  queue [simple-event-topic]
+}
+
+node "SpringBoot" {
+  component [kafka-demo-app]
+}
+
+node "Zookeeper" {
+  component [zookeeper]
+}
+
+node "InitKafka" {
+  component [kafka-temp]
+}
+
+Kafka --> Zookeeper
+SpringBoot --> Kafka
+InitKafka --> Kafka
+
+@enduml
