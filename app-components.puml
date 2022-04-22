@@ -11,12 +11,23 @@ package "kafka" {
   [EventConsumer]
 }
 
+package "config" {
+  [KafkaConfigurator]
+}
+
+package "model" {
+  [Event]
+}
+
 queue "Kafka" {
   [simple-event-topic]
 }
 
 [EventsResource] --> [EventProducer]
+kafka --> config
 [EventProducer] --> [simple-event-topic]
 [EventConsumer] --> [simple-event-topic]
+resources ..> model
+kafka ..> model
 
 @enduml
