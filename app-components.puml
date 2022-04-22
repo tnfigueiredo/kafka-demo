@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+package "resources" {
+  HTTP - [EventsResource]
+}
+
+package "kafka" {
+  [EventProducer]
+  [EventConsumer]
+}
+
+queue "Kafka" {
+  [simple-event-topic]
+}
+
+[EventsResource] --> [EventProducer]
+[EventProducer] --> [simple-event-topic]
+[EventConsumer] --> [simple-event-topic]
+
+@enduml
