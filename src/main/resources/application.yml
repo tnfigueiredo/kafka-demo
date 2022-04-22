@@ -1,0 +1,8 @@
+
+kafka:
+  bootstrapAddress: kafka:9092
+  topics:
+    simple-event-topic: simple-event-topic
+logging:
+  file:
+    path: .
